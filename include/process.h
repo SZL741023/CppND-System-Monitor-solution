@@ -24,9 +24,9 @@ class Process {
  private:
   int pid_;
   float cpu_ {0};
-  long cached_active_time_ {0};
-  long cached_idle_time_ {0};
-  long cached_system_time_ {0};
+  long active_time_ {0};
+  long idle_time_ {0};
+  long system_time_ {0};
 };
 
 #endif

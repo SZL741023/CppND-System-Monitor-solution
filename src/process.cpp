@@ -19,11 +19,11 @@ int Process::Pid() const { return pid_; }
 float Process::CpuUtilization() const { return cpu_; }
 
 void Process::CpuUtilization(long active_time, long system_time) {
-    long duration_active {active_time - cached_active_time_};
-    long duration {system_time - cached_system_time_};
+    long duration_active {active_time - active_time_};
+    long duration {system_time - system_time_};
     cpu_ = static_cast<float> (duration_active) / duration;
-    cached_active_time_ = active_time;
-    cached_system_time_ = system_time;
+    active_time_ = active_time;
+    system_time_ = system_time;
 }
 
 // TODO: Return the command that generated this process
@@ -40,10 +40,10 @@ long int Process::UpTime() const { return LinuxParser::UpTime(Pid()); }
 
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
-bool Process::operator<(Process const& a) const {
-    return CpuUtilization() < a.CpuUtilization();
+bool Process::operator<(Process const& x) const {
+    return CpuUtilization() < x.CpuUtilization();
 }
 
-bool Process::operator>(Process const &a) const {
-    return CpuUtilization() > a.CpuUtilization();
+bool Process::operator>(Process const &x) const {
+    return CpuUtilization() > x.CpuUtilization();
 }

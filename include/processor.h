@@ -7,8 +7,8 @@ class Processor {
 
   // TODO: Declare any necessary private members
  private:
-  long cached_active_time_ {0};
-  long cached_idle_time_ {0};
+  long active_time_ {0};
+  long idle_time_ {0};
 };
 
 #endif
